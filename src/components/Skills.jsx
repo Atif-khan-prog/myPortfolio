@@ -1,0 +1,79 @@
+import React from 'react'
+import HTML from '../assets/images/html-5.png'
+import CSS from '../assets/images/css-3.png'
+import JS from '../assets/images/js.png'
+import react from '../assets/images/atom.png'
+import node from '../assets/images/node-js.png'
+import ex from '../assets/images/express.png'
+import CPP from '../assets/images/c-.png'
+import java from '../assets/images/java.png'
+import mongo from '../assets/images/leaf.png'
+
+const Skills = () => {
+    const skills = [
+        { name: 'HTML', image: HTML },
+        { name: 'CSS', image: CSS },
+        { name: 'JavaScript', image: JS },
+        { name: 'React', image: react },
+        { name: 'Node js', image: node },
+        { name: 'Express', image: ex },
+        { name: 'MongoDB', image: mongo },
+        { name: 'C++', image: CPP },
+        { name: 'Java', image: java },
+
+    ]
+
+    return (
+        <div className="flex justify-center text-white mx-3" id="skills">
+            <div
+                className="md:max-w-[80%] min-h-screen rounded-2xl mb-3 flex flex-col p-6"
+                style={{
+                    background: "rgba(255, 255, 255, 0.05)",
+                    backdropFilter: "blur(8px)",
+                    border: "1px solid rgba(255, 255, 255, 0.1)",
+                }}
+            >
+                <h1 className="text-3xl underline text-center tracking-widest underline-offset-8 decoration-blue-600 my-4">
+                    My Toolkit
+                </h1>
+
+                <div className="md:mt-4 flex flex-wrap justify-center gap-6">
+                    {skills.map((skill, index) => (
+                        <div
+                            key={index}
+                            className="h-36 w-32 p-4 m-4 flex flex-col items-center justify-center text-center rounded-2xl
+                            bg-white/10 border border-white/20
+                            shadow-lg shadow-black/50
+                            hover:shadow-blue-500/40 hover:scale-105
+                            transition-all duration-300 ease-in-out"
+                        >
+                            <img
+                                src={skill.image}
+                                alt={skill.name}
+                                className="w-14 h-14 object-contain mb-2"
+                            />
+                            <span
+                                className="text-lg font-medium transition-all duration-300"
+                                style={{
+                                    textShadow: "2 3 8px rgba(59, 130, 246, 0.7)", // blue glow
+                                }}
+                            >
+                                {skill.name}
+                            </span>
+                        </div>
+
+                    ))}
+                    <br />
+                    <span className='inline-block tracking-widest text-gray-400 space-x-5 items-end text-[14px] mt-4'>
+                        <a href='#projects' 
+                        className='decoration-1 text-blue-500
+                         hover:text-blue-300 scale-x-200 
+                         transition-all duration-300 ease-in'>
+                        projects</a> built By implementing these proficincies</span>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default Skills
