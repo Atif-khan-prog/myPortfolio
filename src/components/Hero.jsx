@@ -36,7 +36,7 @@ const Hero = () => {
 
 
           {/* Desktop Menu */}
-          <ul className="flex gap-5 mt-4 flex-col md:flex-row space-x-8 text-base md:text-lg">
+          <ul className="flex gap-5 mt-4   flex-col md:flex-row space-x-8 text-base md:text-lg">
             <a className="cursor-pointer hover:underline hover:underline-offset-4 hover:decoration-blue-600 " href='#home'>Home</a>
             <a className="cursor-pointer hover:underline hover:underline-offset-4 hover:decoration-blue-600 " href='#skills'>Tech Stack</a>
             <a className="cursor-pointer hover:underline hover:underline-offset-4 hover:decoration-blue-600 " href='#projects'>Projects</a>
