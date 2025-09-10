@@ -8,6 +8,7 @@ import ex from '../assets/images/express.png'
 import CPP from '../assets/images/c-.png'
 import java from '../assets/images/java.png'
 import mongo from '../assets/images/leaf.png'
+import github from '../assets/images/github.png'
 
 const Skills = () => {
     const skills = [
@@ -20,11 +21,12 @@ const Skills = () => {
         { name: 'MongoDB', image: mongo },
         { name: 'C++', image: CPP },
         { name: 'Java', image: java },
+        { name: 'Git & GitHub', image: github },
 
     ]
 
     return (
-        <div className="flex justify-center text-white mx-3" id="skills">
+        <div className="flex overflow-hidden justify-center text-white mx-3" id="skills">
             <div
                 className="md:max-w-[80%] min-h-screen rounded-2xl mb-3 flex flex-col p-6"
                 style={{
@@ -37,11 +39,11 @@ const Skills = () => {
                     My Toolkit
                 </h1>
 
-                <div className="md:mt-4 flex flex-wrap justify-center gap-6">
+                <div className="md:mt-4 flex flex-wrap flex-row justify-center md:justify-center gap-4 md:gap-6">
                     {skills.map((skill, index) => (
                         <div
                             key={index}
-                            className="h-36 w-32 p-4 m-4 flex flex-col items-center justify-center text-center rounded-2xl
+                            className="h-36 w-28 p-4 m-2 flex flex-col items-center justify-center text-center rounded-2xl
                             bg-white/10 border border-white/20
                             shadow-lg shadow-black/50
                             hover:shadow-blue-500/40 hover:scale-105
@@ -50,10 +52,10 @@ const Skills = () => {
                             <img
                                 src={skill.image}
                                 alt={skill.name}
-                                className="w-14 h-14 object-contain mb-2"
+                                className="w-10 h-10 object-contain mb-2"
                             />
                             <span
-                                className="text-lg font-medium transition-all duration-300"
+                                className="text-sm font-small inline-block transition-all duration-300"
                                 style={{
                                     textShadow: "2 3 8px rgba(59, 130, 246, 0.7)", // blue glow
                                 }}
@@ -64,12 +66,12 @@ const Skills = () => {
 
                     ))}
                     <br />
-                    <span className='inline-block tracking-widest text-gray-400 space-x-5 items-end text-[14px] mt-4'>
+                    <span className='inline-block  tracking-normal text-gray-400 space-x-5 justify-center text-[14px] mt-4'>
                         <a href='#projects' 
                         className='decoration-1 text-blue-500
                          hover:text-blue-300 scale-x-200 
                          transition-all duration-300 ease-in'>
-                        projects</a> built By implementing these proficincies</span>
+                        projects</a> built By implementing these tecks</span>
                 </div>
             </div>
         </div>
