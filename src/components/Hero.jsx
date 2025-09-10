@@ -1,7 +1,7 @@
 import React from 'react'
 import heroBg from '../assets/images/heroBg.jpg'
 import heroBg2 from '../assets/images/heroBg2.jpg'
-import heroBg3 from '../assets/images/heroBg3.jpg'
+import heroBG3 from '../assets/images/heroBG3.jpg'
 import profile from '../assets/img.jpg'
 const Hero = () => {
   return (
@@ -14,7 +14,7 @@ const Hero = () => {
         <div style={{
           position: "absolute",
           inset: 0,
-          backgroundImage: `url(${heroBg3})`,
+          backgroundImage: `url(${heroBG3})`,
           // background: "linear-gradient(135deg, rgba(0,0,0,0.95) 70%, rgba(13,0,210,0.7) 100%)",
           filter: "blur(8px)",
           transform: "scale(1.1)",
