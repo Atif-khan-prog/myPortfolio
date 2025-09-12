@@ -1,81 +1,186 @@
-import React, { useState, useEffect } from "react";
-import { createPortal } from "react-dom";
-
-/* Simple Modal that portals to document.body */
-const Modal = ({ isOpen, onClose, children }) => {
-  useEffect(() => {
-    if (!isOpen) return;
-    const onKey = (e) => { if (e.key === "Escape") onClose(); };
-    const prevOverflow = document.body.style.overflow;
-    document.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden"; // prevent background scroll
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prevOverflow;
-    };
-  }, [isOpen, onClose]);
-
-  if (!isOpen) return null;
-
-  return createPortal(
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      {/* Backdrop */}
-      <div
-        className="absolute inset-0 bg-black/50"
-        onClick={onClose}
-        aria-hidden="true"
-      />
-      {/* Modal panel */}
-      <div
-        role="dialog"
-        aria-modal="true"
-        className="relative z-10 w-[90%] md:w-2/3 lg:w-1/2 h-[80vh] bg-stone-700 rounded-2xl p-6 overflow-auto shadow-lg"
-      >
-        {children}
-      </div>
-    </div>,
-    document.body
-  );
-};
-
+import React, { useState, useRef, useEffect } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import lifeVault from '../assets/projectsIMG/lifeVault.png'
+import promotium from '../assets/projectsIMG/promotium.png'
+import todo from '../assets/projectsIMG/todo.png'
+import estate from '../assets/projectsIMG/estate.png'
 const Projects = () => {
-  const [showProjectCard, setShowProjectCard] = useState(false);
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(null);
+  const modelRef = useRef([]);
+
+  const outsideClicked = (e) => {
+    if (
+      activeIndex !== null &&
+      modelRef.current[activeIndex] &&
+      !modelRef.current[activeIndex].contains(e.target)
+    ) {
+      setActiveIndex(null);
+    }
+  };
+
+  useEffect(() => {
+    if (activeIndex !== null) {
+      document.addEventListener("click", outsideClicked);
+    }
+    return () => document.removeEventListener("click", outsideClicked);
+  }, [activeIndex]);
 
   const projects = [
-    { name: "Promotium", images: ["Image1", "Image2"], description: "meets promoter with advertiser", link: "somewhere" },
-    { name: "nothing", images: ["Image1", "Image2"], description: "meets promoter with advertiser", link: "somewhere" },
-    { name: "something", images: ["Image1", "Image2"], description: "meets promoter with advertiser", link: "somewhere" },
-    { name: "everything", images: ["Image1", "Image2"], description: "meets promoter with advertiser", link: "somewhere" },
+    {
+      name: "Promotium",
+      images: [promotium], // replace with real screenshots
+      description:
+        "Promotium is a decentralized platform that connects promoters with advertisers, enabling seamless collaboration on blockchain. I primarily worked on the backend, building APIs  and ensuring secure data flow between users and services.",
+      link: "https://dapp-promotium.netlify.app/",
+      techs: [
+        "HTML + CSS",
+        "React.js",
+        "Node + Express",
+        "MongoDB",
+        "Pinata",
+        "ThirdWeb",
+        "Solidity",
+        "BlockChain",
+      ],
+    },
+    {
+      name: "Real Estate",
+      images: [estate],
+      description:
+        "A modern real estate web application designed to showcase properties with a clean and responsive UI. The project focuses on smooth navigation, property listing management, and user-friendly forms for inquiries, making it easier for users to explore and connect with sellers.",
+      link: "https://real-estate-rv.netlify.app/",
+      techs: ["HTML", "Tailwind CSS", "React.js + Vite + JSX", "Web3 Forms"],
+    },
+    {
+      name: "Todo List",
+      images: [todo],
+      description:
+        "A productivity-focused application that allows users to manage their daily tasks with ease. It includes features like task creation, updates, and deletion with a persistent backend. Designed to be minimal yet effective, the app helps users stay organized and on top of their schedules.",
+      link: "https://todo-list-fro.netlify.app/",
+      techs: [
+        "HTML",
+        "Tailwind CSS",
+        "React.js + Vite",
+        "Node + Express",
+        "MongoDB",
+      ],
+    },
+    {
+      name: "Daily Diary",
+      images: [lifeVault],
+      description:
+        "Daily Diary is a full-stack application built to help users record personal experiences, manage finances, and store precious memories. It integrates multiple modules including a diary system, expense tracking, and memory management. The focus of this project was to combine practicality with simplicity in a single app.",
+      link: "Not Hosted",
+      techs: [
+        "HTML + CSS",
+        "JavaScript",
+        "Node + Express",
+        "EJS Templating",
+        "MySQL",
+      ],
+    },
   ];
 
-  const openProject = (project) => {
-    setSelectedProject(project);
-    setShowProjectCard(true);
-  };
-
-  const closeProject = () => {
-    setShowProjectCard(false);
-    setSelectedProject(null);
-  };
-
   return (
-    <div id="projects" className="w-screen mt-4 flex justify-center items-center text-white mx-3">
+    <div className="flex justify-center mt-8 text-white" id="projects">
       <div
-        className="md:max-w-[80%] min-h-screen rounded-2xl mb-3 flex flex-wrap justify-center p-6"
+        className="md:w-[80%] w-full min-h-screen rounded-2xl flex flex-col p-6 space-y-6"
         style={{
           background: "rgba(255, 255, 255, 0.05)",
           backdropFilter: "blur(8px)",
           border: "1px solid rgba(255, 255, 255, 0.1)",
         }}
       >
-        <div>
-          <h1 className="text-center text-4xl tracking-widest underline underline-offset-8 decoration-blue-600">
-            Projects <span className="text-2xl">({projects.length})</span>
-          </h1>
+        <h1 className="text-3xl underline text-center tracking-widest underline-offset-8 decoration-blue-600 my-4">
+          My Projects
+        </h1>
 
-        
-        </div>
+        {projects.map((project, i) => (
+          <div
+            key={project.name}
+            ref={(el) => (modelRef.current[i] = el)}
+            className={`transition-all duration-100 ease-in overflow-hidden 
+              rounded-2xl border border-gray-700/40 shadow-md bg-gradient-to-br 
+              from-gray-900/70 to-gray-800/50 hover:shadow-lg 
+              ${activeIndex === i ? "max-h-[1000px]" : "max-h-40"} 
+              flex flex-col md:flex-row`}
+          >
+            {/* Project Image */}
+            <div className={`md:w-1/3 ${activeIndex == i && 'md:w-2/3'} w-full transition-all duration-100 ease-in h-40 md:h-auto relative`}>
+              <img
+                src={project.images[0]}
+                alt={project.name}
+                className="object-cover w-full h-full rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none"
+              />
+            </div>
+
+            {/* Project Details */}
+            <div className={`md:w-2/3 ${activeIndex === i && 'md:w-1/3'} w-full  transition-all duration-100 ease-in p-6 flex flex-col`}>
+              <div className="flex items-center justify-between">
+                <h2
+                  className={`font-bold transition-all duration-200 ${
+                    activeIndex === i ? "text-2xl text-blue-400" : "text-lg"
+                  }`}
+                >
+                  {project.name}
+                </h2>
+                {activeIndex === i ? (
+                  <span
+                    className="cursor-pointer"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActiveIndex(null);
+                    }}
+                  >
+                    <ChevronUp />
+                  </span>
+                ) : (
+                  <span
+                    className="cursor-pointer"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActiveIndex(i);
+                    }}
+                  >
+                    <ChevronDown />
+                  </span>
+                )}
+              </div>
+
+              {/* Description + Techs (only visible when open) */}
+              <div
+                className={`transition-opacity duration-300 ease-in-out ${
+                  activeIndex === i ? "opacity-100 mt-4" : "opacity-0 h-0 overflow-hidden"
+                }`}
+              >
+                <p className="text-sm text-gray-300 leading-relaxed font-sans">
+                  {project.description}
+                </p>
+
+                {/* Tech stack tags */}
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {project.techs.map((tech, idx) => (
+                    <span
+                      key={idx}
+                      className="px-3 py-1 text-xs rounded-full bg-blue-600/20 text-blue-300 border border-blue-600/40"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <a
+                  className="inline-block mt-4 text-sm underline underline-offset-2 text-blue-400 hover:text-blue-300"
+                  href={project.link}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {project.name} Live Website
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

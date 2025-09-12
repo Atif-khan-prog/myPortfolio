@@ -3,6 +3,7 @@ import heroBg from '../assets/images/heroBg.jpg'
 import heroBg2 from '../assets/images/heroBg2.jpg'
 import heroBG3 from '../assets/images/heroBG3.jpg'
 import profile from '../assets/img.jpg'
+import {Download} from 'lucide-react'
 const Hero = () => {
   return (
     <div className="relative h-screen w-full mb-4 overflow-hidden" id='home'>
@@ -29,14 +30,14 @@ const Hero = () => {
       {/* Content (stays sharp) */}
       <div className="relative z-10 text-white">
         {/* Navbar */}
-        <nav className="fixed flex justify-between items-center w-full px-6 py-4">
+        <nav className=" flex justify-between items-center w-full px-6 py-4">
           <div className="font-bold text-xl md:text-3xl cursor-pointer flex flex-col">Muhammad Atif
             <span className='text-[12px] text-gray-500 flex justify-center '>Full Stack | MERN & AI Enthusiast</span>
           </div>
 
 
           {/* Desktop Menu */}
-          <ul className="flex gap-5 mt-4   flex-col md:flex-row space-x-8 text-base md:text-lg">
+          <ul className="flex justify-end ml-4 gap-5 mt-4   flex-col md:flex-row space-x-8 text-base md:text-lg">
             <a className="cursor-pointer hover:underline hover:underline-offset-4 hover:decoration-blue-600 " href='#home'>Home</a>
             <a className="cursor-pointer hover:underline hover:underline-offset-4 hover:decoration-blue-600 " href='#skills'>Tech Stack</a>
             <a className="cursor-pointer hover:underline hover:underline-offset-4 hover:decoration-blue-600 " href='#projects'>Projects</a>
@@ -47,7 +48,7 @@ const Hero = () => {
         <div className="h-[80vh] pt-32 flex flex-col lg:flex-row items-center justify-center px-6 md:px-12 lg:px-24">
           {/* Profile Image */}
           <div className="flex items-center justify-center h-56 w-56 md:h-72 md:w-72 lg:h-96 lg:w-96 rounded-full border">
-            <img src={profile} alt="" className='w-56 h-56 md:h-72 md:w-72 lg:h-96 lg:w-96 rounded-full ' />
+            <img alt="Profile Image" />
           </div>
 
           {/* Text + Buttons */}
@@ -66,8 +67,8 @@ const Hero = () => {
                 href="/docs/myCv.pdf"
                 download="Muhammad-Atif-CV.pdf"
               >
-                <button className="bg-blue-600 cursor-pointer hover:bg-blue-800 px-6 py-2 text-white rounded">
-                  Download CV
+                <button className="bg-blue-600 flex flex-row  cursor-pointer w-52 hover:bg-blue-800 px-6 py-2 text-white rounded">
+                  Download CV <Download className='ml-2 pb-1' />
                 </button>
               </a>
             </div>
