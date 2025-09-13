@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, ChromeIcon } from "lucide-react";
 import lifeVault from '../assets/projectsIMG/lifeVault.png'
 import promotium from '../assets/projectsIMG/promotium.png'
 import todo from '../assets/projectsIMG/todo.png'
@@ -110,12 +110,16 @@ const Projects = () => {
               <img
                 src={project.images[0]}
                 alt={project.name}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveIndex(i);
+                }}
                 className="object-cover w-full h-full rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none"
               />
             </div>
 
             {/* Project Details */}
-            <div className={`md:w-2/3 ${activeIndex === i && 'md:w-1/3'} w-full  transition-all duration-100 ease-in p-6 flex flex-col`}>
+            <div className={`md:w-2/3 w-full  transition-all duration-100 ease-in p-6 flex flex-col`}>
               <div className="flex items-center justify-between">
                 <h2
                   className={`font-bold transition-all duration-200 ${
@@ -175,7 +179,7 @@ const Projects = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {project.name} Live Website
+                  {project.name === 'Daily Diary' ? <span className="decoration-0 cursor-default text-white" aria-disabled>Not Hosted</span> : 'Live Website'} 
                 </a>
               </div>
             </div>

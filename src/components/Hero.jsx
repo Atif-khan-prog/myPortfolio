@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import heroBg from '../assets/images/heroBg.jpg'
 import heroBg2 from '../assets/images/heroBg2.jpg'
 import heroBG3 from '../assets/images/heroBG3.jpg'
 import profile from '../assets/img.jpg'
-import {Download} from 'lucide-react'
+import {Download, BarChart2Icon} from 'lucide-react'
 const Hero = () => {
+
+  const[sideMenu, setSideMenu] = useState(false);
   return (
     <div className="relative h-screen w-full mb-4 overflow-hidden" id='home'>
       {/* Blurred background */}
@@ -29,20 +31,55 @@ const Hero = () => {
 
       {/* Content (stays sharp) */}
       <div className="relative z-10 text-white">
+         <div className={`w-full h-screen ${sideMenu && 'hidden'} md:hidden  bg-gray-900`}>
+          <nav className=" flex  flex-col  w-full px-6 py-4">
+         <div className='flex justify-between w-full'>
+           <div className="font-bold text-xl md:text-4xl cursor-pointer justify-start flex flex-col">Muhammad Atif
+            <span className='text-[12px] text-gray-500 flex justify-between '>
+              Full Stack | MERN & AI Enthusiast
+            
+              </span>
+            
+          </div>
+          <div className='mt-3'>
+            <div className='rotate-270 md:hidden mb-12 text-white  ml-12' onClick={() => setSideMenu(true)}>
+            <BarChart2Icon />
+          </div>
+          </div>
+         </div>
+
+        {/* sideMenue For Mobile */}
+      
+          <ul className="flex justify-center items-center h-screen  w-full space-y-4 mt-12 flex-col flex-1 ">
+            <a className="cursor-pointer hover:underline hover:underline-offset-4 hover:decoration-blue-600 " href='#home'>Home</a>
+            <a className="cursor-pointer hover:underline hover:underline-offset-4 hover:decoration-blue-600 " href='#skills'>Tech Stack</a>
+            <a className="cursor-pointer hover:underline hover:underline-offset-4 hover:decoration-blue-600 " href='#projects'>Projects</a>
+            <a className="cursor-pointer hover:underline hover:underline-offset-4 hover:decoration-blue-600 " href='#education'>Education</a>
+          </ul>
+        </nav>
+        </div>
         {/* Navbar */}
         <nav className=" flex justify-between items-center w-full px-6 py-4">
           <div className="font-bold text-xl md:text-3xl cursor-pointer flex flex-col">Muhammad Atif
             <span className='text-[12px] text-gray-500 flex justify-center '>Full Stack | MERN & AI Enthusiast</span>
           </div>
 
+        {/* sideMenue For Mobile */}
+        
 
           {/* Desktop Menu */}
-          <ul className="flex justify-end ml-4 gap-5 mt-4   flex-col md:flex-row space-x-8 text-base md:text-lg">
+
+          {/* close preview of ICon */}
+          <div className='rotate-270 md:hidden ml-12' onClick={() => setSideMenu(false)}>
+            <BarChart2Icon />
+          </div>
+          <ul className="hidden md:flex justify-end ml-4 gap-5 mt-4  md:visible flex-col md:flex-row space-x-8 text-base md:text-lg">
             <a className="cursor-pointer hover:underline hover:underline-offset-4 hover:decoration-blue-600 " href='#home'>Home</a>
             <a className="cursor-pointer hover:underline hover:underline-offset-4 hover:decoration-blue-600 " href='#skills'>Tech Stack</a>
             <a className="cursor-pointer hover:underline hover:underline-offset-4 hover:decoration-blue-600 " href='#projects'>Projects</a>
           </ul>
         </nav>
+       
 
         {/* Hero section */}
         <div className="h-[80vh] pt-32 flex flex-col lg:flex-row items-center justify-center px-6 md:px-12 lg:px-24">
