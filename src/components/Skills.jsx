@@ -66,10 +66,11 @@ const Skills = () => {
 
                     ))}
                     <br />
-                    <span className='inline-block  tracking-normal text-gray-400 space-x-5 justify-center text-[14px] mt-4'>
+                    <span className='flex w-full  tracking-normal text-gray-400 space-x-5 justify-center text-[14px] mt-4'>
                         <a href='#projects' 
                         className='decoration-1 text-blue-500
-                         hover:text-blue-300 scale-x-200 
+                         hover:text-blue-300 mr-2 underline
+                         underline-offset-4 
                          transition-all duration-300 ease-in'>
                         projects</a> built By implementing these tecks</span>
                 </div>

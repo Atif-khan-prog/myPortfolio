@@ -104,7 +104,7 @@ const Hero = () => {
                 href="/docs/myCv.pdf"
                 download="Muhammad-Atif-CV.pdf"
               >
-                <button className="bg-blue-600 flex flex-row  cursor-pointer w-52 hover:bg-blue-800 px-6 py-2 text-white rounded">
+                <button className="bg-blue-600 flex flex-row  cursor-pointer max-w-52 hover:bg-blue-800 px-6 py-2 text-white rounded">
                   Download CV <Download className='ml-2 pb-1' />
                 </button>
               </a>

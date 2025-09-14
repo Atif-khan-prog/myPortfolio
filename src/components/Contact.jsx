@@ -18,40 +18,73 @@ const Contact = () => {
                     Let's Connect
                 </h1>
 
-                <div className='w-full h-full flex justify-center flex-col md:flex-row  mt-4'>
-                    <div className='w-full md:w-1/2 h-full  p-4'>
-                        <h1 className='text-3xl text-white font-semibold w-full flex justify-center'>Contacts</h1>
+                <div className="w-full h-full flex flex-col md:flex-row gap-6 mt-6 px-4">
+  {/* Contact Info Section */}
+  <div className="w-full md:w-1/2 h-full p-6 rounded-2xl border border-gray-700/40 shadow-md bg-gradient-to-br from-gray-900/70 to-gray-800/50">
+    <h1 className="text-3xl text-white font-semibold mb-6 text-center">Contact Information</h1>
 
-                        <div className='border  font-sans rounded-2xl gap-6 justify-between  h-11/12 mt-2 pt-8 space-y-4 border-gray-700/40 shadow-md bg-gradient-to-br 
-              from-gray-900/70 to-gray-800/50'>
+    <div className="space-y-6 text-gray-300">
+      <div className="flex items-center justify-between border-b border-gray-700/40 pb-2">
+        <span className="font-medium">Email</span>
+        <span className="text-blue-400">muhammadatif6541@gmail.com</span>
+      </div>
 
-                            <div className='h-11/12'>
-                                <div>Email <span>muhammadatif6541@gmail.com</span></div>
-                                <div>LinkdIn <span>Muhammad Atif</span></div>
-                                <div>Address <span>Peshawar</span></div>
-                            </div>
-                        </div>
-                    </div>
+      <div className="flex items-center justify-between border-b border-gray-700/40 pb-2">
+        <span className="font-medium"> LinkedIn</span>
+        <span className="text-blue-400"><a href="www.linkedin.com/in/muhammad-atif-69a4442b4" 
+        target='_blank'
+        rel='noreferrer'>Muhammad Atif</a></span>
+      </div>    
 
-                    <div className='w-full md:w-1/2 h-11/12 mt-4'>
-                        <h1 className='text-3xl text-white font-semibold w-full flex justify-center'>Details</h1>
+      <div className="flex items-center justify-between border-b border-gray-700/40 pb-2">
+        <span className="font-medium">Address</span>
+        <span className="text-blue-400">Peshawar</span>
+      </div>
+    </div>
+  </div>
 
-                        <div className='border font-sans rounded-2xl gap-6 justify-between  h-11/12 mt-2 pt-8 space-y-4 border-gray-700/40 shadow-md bg-gradient-to-br 
-              from-gray-900/70 to-gray-800/50'>
-                            <form action="submit" className='px-6  h-full space-y-'>
-                                <input type="text" placeholder='Name'
-                                    className='border-b-2 border-blue-300 focus:border-blue-600 p-2 w-full
-                            outline-none'
-                                    name="" id="" required />
-                                <input type="email" placeholder='Email'
-                                    className='border-b-2 border-blue-300 focus:border-blue-600 p-2 w-full
-                            outline-none'
-                                    name="" id="" required />
-                                <button className='p-2 mt-12 flex justify-center bg-blue-600 rounded'>Send Message</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+  {/* Message Form Section */}
+  <div className="w-full md:w-1/2 h-full p-6 rounded-2xl border border-gray-700/40 shadow-md bg-gradient-to-br from-gray-900/70 to-gray-800/50">
+    <h1 className="text-3xl text-white font-semibold mb-6 text-center">Send a Message</h1>
+
+    <form className="space-y-6">
+      <div>
+        <input
+          type="text"
+          placeholder="Your Name"
+          className="w-full p-3 rounded-lg bg-gray-800/40 text-white placeholder-gray-400 border border-gray-600 focus:border-blue-500 focus:ring focus:ring-blue-500/40 outline-none transition"
+          required
+        />
+      </div>
+
+      <div>
+        <input
+          type="email"
+          placeholder="Your Email"
+          className="w-full p-3 rounded-lg bg-gray-800/40 text-white placeholder-gray-400 border border-gray-600 focus:border-blue-500 focus:ring focus:ring-blue-500/40 outline-none transition"
+          required
+        />
+      </div>
+
+      <div>
+        <textarea
+          rows="4"
+          placeholder="Your Message"
+          className="w-full p-3 rounded-lg bg-gray-800/40 text-white placeholder-gray-400 border border-gray-600 focus:border-blue-500 focus:ring focus:ring-blue-500/40 outline-none transition resize-none"
+          required
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        className="w-full py-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-medium transition"
+      >
+        Send Message
+      </button>
+    </form>
+  </div>
+</div>
+
 
             </div>
         </div>
