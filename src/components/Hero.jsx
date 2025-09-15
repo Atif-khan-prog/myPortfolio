@@ -6,9 +6,9 @@ import profile from '../assets/img.jpg'
 import {Download, BarChart2Icon} from 'lucide-react'
 const Hero = () => {
 
-  const[sideMenu, setSideMenu] = useState(false);
+  const[sideMenu, setSideMenu] = useState(true);
   return (
-    <div className="relative h-screen w-full mb-4 overflow-hidden" id='home'>
+    <div className="relative h-screen w-full mb-4 overflow-hidden" id='home' >
       {/* Blurred background */}
       <div style={{
         
@@ -24,7 +24,7 @@ const Hero = () => {
         }} />
 
         {/* Stars layer */}
-        <div className="stars">Aefjsodjfoisd</div>
+        <div className="stars"></div>
 
       </div>
 
@@ -84,12 +84,12 @@ const Hero = () => {
         {/* Hero section */}
         <div className="h-[80vh] pt-32 flex flex-col lg:flex-row items-center justify-center px-6 md:px-12 lg:px-24">
           {/* Profile Image */}
-          <div className="flex items-center justify-center h-56 w-56 md:h-72 md:w-72 lg:h-96 lg:w-96 rounded-full border">
+          {/* <div className="flex items-center justify-center h-56 w-56 md:h-72 md:w-72 lg:h-96 lg:w-96 rounded-full border">
             <img alt="Profile Image" />
-          </div>
+          </div> */}
 
           {/* Text + Buttons */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left mt-6 lg:mt-0 lg:ml-12">
+          <div className="flex flex-col mb-8 items-center lg:items-start text-center lg:text-left mt-6 lg:mt-0 lg:ml-12">
             <h1 className="text-3xl md:text-5xl font-bold">
               Welcome to My Portfolio
             </h1>

@@ -35,7 +35,7 @@ const Skills = () => {
                     border: "1px solid rgba(255, 255, 255, 0.1)",
                 }}
             >
-                <h1 className="text-3xl underline text-center tracking-widest underline-offset-8 decoration-blue-600 my-4">
+                <h1 className="text-3xl  text-center tracking-widest  my-4">
                     My Toolkit
                 </h1>
 
