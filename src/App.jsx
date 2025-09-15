@@ -2,35 +2,52 @@ import React, { useEffect, useState } from 'react'
 import Hero from './components/Hero'
 import Skills from './components/Skills'
 import Projects from './components/Projects'
-import Contact  from './components/Contact'
+import Contact from './components/Contact'
 
 const App = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const loadPage = () => setLoading(true);
+    const images = Array.from(document.images)
+    let loadedCount = 0
 
-    if(document.readyState === 'complete'){
+    if (images.length === 0) {
       setLoading(false)
+      return
     }
-    document.addEventListener('load', loadPage)
 
-    return () => document.removeEventListener('load', loadPage)
-  },[])
+    const checkAllLoaded = () => {
+      loadedCount++
+      if (loadedCount === images.length) {
+        setLoading(false)
+      }
+    }
+
+    images.forEach(img => {
+      if (img.complete) {
+        checkAllLoaded()
+      } else {
+        img.addEventListener('load', checkAllLoaded)
+        img.addEventListener('error', checkAllLoaded)
+      }
+    })
+  }, [])
+
   return (
-    <>
-    <div className='overflow-hidden'>  
-     {loading ? <div className='w-full font-bold h-screen flex justify-center items-center text-3xl'>
-      Loading... </div> :
-      <div>
-         <Hero />
-      <Skills />
-      <Projects />
-      <Contact />
-        </div>}
-      </div>
-    
-    </>
+    <div className='overflow-hidden'>
+      {loading ? (
+        <div className='w-full bg-black text-white font-bold h-screen flex justify-center items-center text-3xl'>
+          Loading...
+        </div>
+      ) : (
+        <div>
+          <Hero />
+          <Skills />
+          <Projects />
+          <Contact />
+        </div>
+      )}
+    </div>
   )
 }
 
