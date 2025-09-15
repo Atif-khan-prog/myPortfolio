@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 const Hero = () => {
   const [sideMenu, setSideMenu] = useState(true)
-
+ 
   return (
     <div className="relative h-screen w-full mb-4 overflow-hidden" id="home">
       {/* Blurred background */}
@@ -24,8 +24,9 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 text-white">
-        {/* Mobile Nav (unchanged) */}
-        <div className={`w-full h-screen ${sideMenu && 'hidden'} md:hidden bg-gray-900`}>
+        {/* Mobile Nav  */}
+        <div
+         id='mobileNav' className={`w-full h-screen ${sideMenu && 'hidden'} md:hidden bg-gray-900`}>
           <nav className="flex flex-col w-full px-6 py-4">
             <div className="flex justify-between w-full">
               <motion.div
@@ -54,6 +55,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.1 }}
                 className="cursor-pointer hover:underline hover:decoration-blue-600"
                 href="#home"
+                onClick={() => setSideMenu(true)}
               >
                 Home
               </motion.a>
@@ -61,6 +63,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.1 }}
                 className="cursor-pointer hover:underline hover:decoration-blue-600"
                 href="#skills"
+                onClick={() => setSideMenu(true)}
               >
                 Tech Stack
               </motion.a>
@@ -68,6 +71,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.1 }}
                 className="cursor-pointer hover:underline hover:decoration-blue-600"
                 href="#projects"
+                onClick={() => setSideMenu(true)}
               >
                 Projects
               </motion.a>
