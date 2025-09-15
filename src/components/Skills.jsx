@@ -27,12 +27,12 @@ const Skills = () => {
     ]
 
     return (
-        <motion.div 
-        initial={{ x: -400, opacity: 0}}
-        whileInView={{ x: 0, opacity: 1}}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-        className="flex overflow-hidden justify-center text-white mx-3" id="skills">
+        <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+            className="flex justify-center text-white mx-3" id="skills">
             <div
                 className="md:max-w-[80%] min-h-screen rounded-2xl mb-3 flex flex-col p-6"
                 style={{
@@ -73,12 +73,12 @@ const Skills = () => {
                     ))}
                     <br />
                     <span className='flex w-full  tracking-normal text-gray-400 space-x-5 justify-center text-[14px] mt-4'>
-                        <a href='#projects' 
-                        className='decoration-1 text-blue-500
+                        <a href='#projects'
+                            className='decoration-1 text-blue-500
                          hover:text-blue-300 mr-2 underline
                          underline-offset-4 
                          transition-all duration-300 ease-in'>
-                        projects</a> built By implementing these tecks</span>
+                            projects</a> built By implementing these tecks</span>
                 </div>
             </div>
         </motion.div>
