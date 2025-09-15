@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import heroBG3 from '../assets/images/heroBG3.jpg'
 import { Download, BarChart2Icon } from 'lucide-react'
 import { motion } from 'framer-motion'
 
@@ -14,7 +13,7 @@ const Hero = () => {
           style={{
             position: 'absolute',
             inset: 0,
-            backgroundImage: `url(${heroBG3})`,
+            background: `black`,
             filter: 'blur(8px)',
             transform: 'scale(1.1)',
           }}

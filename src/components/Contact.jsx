@@ -4,6 +4,8 @@ import github from '../assets/images/github.png'
 import location from '../assets/images/location.png'
 import gmail from '../assets/images/gmail.png'
 import {motion} from 'framer-motion'
+import {toast} from 'react-hot-toast'
+
 const Contact = () => {
 
   const [result, setResult] = useState('');
@@ -12,8 +14,8 @@ const Contact = () => {
     e.preventDefault()
     setResult('Sending...')
     const formData = new FormData(e.target);
-    formData.append('access_key', )
-
+    formData.append('access_key','68696fba-be14-4148-9338-3dae23b16758')
+    try{
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       body: formData
@@ -21,10 +23,10 @@ const Contact = () => {
 
     const data = await response.json();
 
-    try{
+    
       if(data.success){
-      alert('Sent Successfully');
-      setResult('Success');
+      toast.success('Message Sent Successfully')
+      setResult('');
       e.target.reset();
       console.log(formData)
     }
@@ -128,7 +130,7 @@ const Contact = () => {
       <button
         className="w-full cursor-pointer py-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-medium transition"
       >
-        Send Message
+        {result? <div>{result}</div>: 'Send Message'}
       </button>
     </form>
   </div>
