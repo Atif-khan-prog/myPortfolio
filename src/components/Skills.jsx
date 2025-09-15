@@ -9,6 +9,7 @@ import CPP from '../assets/images/c-.png'
 import java from '../assets/images/java.png'
 import mongo from '../assets/images/leaf.png'
 import github from '../assets/images/github.png'
+import { motion } from 'framer-motion'
 
 const Skills = () => {
     const skills = [
@@ -26,7 +27,12 @@ const Skills = () => {
     ]
 
     return (
-        <div className="flex overflow-hidden justify-center text-white mx-3" id="skills">
+        <motion.div 
+        initial={{ x: -400, opacity: 0}}
+        whileInView={{ x: 0, opacity: 1}}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+        className="flex overflow-hidden justify-center text-white mx-3" id="skills">
             <div
                 className="md:max-w-[80%] min-h-screen rounded-2xl mb-3 flex flex-col p-6"
                 style={{
@@ -75,7 +81,7 @@ const Skills = () => {
                         projects</a> built By implementing these tecks</span>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

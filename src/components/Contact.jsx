@@ -3,6 +3,7 @@ import linkedin from '../assets/images/linkedin.png'
 import github from '../assets/images/github.png'
 import location from '../assets/images/location.png'
 import gmail from '../assets/images/gmail.png'
+import {motion} from 'framer-motion'
 const Contact = () => {
 
   const [result, setResult] = useState('');
@@ -37,7 +38,12 @@ const Contact = () => {
     return (
 
 
-        <div className="flex justify-center mt-8 text-white" id="contact">
+        <motion.div 
+        initial={{ y: 200, opacity: 0}}
+        whileInView={{ y: 0, opacity: 1}}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+        className="flex justify-center mt-8 text-white" id="contact">
             <div
                 className="md:w-[80%] w-full min-h-screen rounded-2xl flex flex-col p-6 space-y-6"
                 style={{
@@ -130,7 +136,7 @@ const Contact = () => {
 
 
             </div>
-        </div>
+        </motion.div>
     )
 }
 

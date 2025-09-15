@@ -4,6 +4,7 @@ import lifeVault from '../assets/projectsIMG/lifeVault.png'
 import promotium from '../assets/projectsIMG/promotium.png'
 import todo from '../assets/projectsIMG/todo.png'
 import estate from '../assets/projectsIMG/estate.png'
+import {motion} from 'framer-motion'
 const Projects = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const modelRef = useRef([]);
@@ -82,7 +83,12 @@ const Projects = () => {
   ];
 
   return (
-    <div className="flex justify-center mt-8 text-white" id="projects">
+    <motion.div 
+        initial={{ x: 200, opacity: 0}}
+        whileInView={{ x: 0, opacity: 1}}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+         className="flex justify-center mt-8 text-white" id="projects">
       <div
         className="md:w-[80%] w-full min-h-screen rounded-2xl flex flex-col p-6 space-y-6"
         style={{
@@ -185,8 +191,11 @@ const Projects = () => {
             </div>
           </div>
         ))}
+           <span className="
+           flex justify-center">Want to Proceed? Let's <a href="#contact" className="text-blue-500 ml-2">Connect</a></span>
       </div>
-    </div>
+   
+    </motion.div>
   );
 };
 
